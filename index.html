@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.A.R.C - I 🔱</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Mobile Toggle & Overlay -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Sidebar">
+            <i data-lucide="menu"></i>
+        </button>
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar__header">
+                <div class="sidebar__brand">
+                    <div class="sidebar__logo">M</div>
+                    <div>
+                        <div class="sidebar__title">M.A.R.C-I</div>
+                        <div class="sidebar__subtitle">Command Center</div>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="sidebar__nav" id="sidebarNav">
+                <div class="nav__section-label">Command</div>
+                <a href="#/" class="nav__link active" data-route="/">
+                    <i data-lucide="layout-dashboard" class="nav__icon"></i> Dashboard
+                </a>
+                <a href="#/council" class="nav__link" data-route="/council">
+                    <i data-lucide="gavel" class="nav__icon"></i> Crown's Council
+                </a>
+                
+                <div class="nav__section-label" style="margin-top: var(--space-4)">Ministries</div>
+                <a href="#/ministry/wealth" class="nav__link" data-route="/ministry/wealth">
+                    <i data-lucide="coins" class="nav__icon"></i> Wealth
+                </a>
+                <a href="#/ministry/work" class="nav__link" data-route="/ministry/work">
+                    <i data-lucide="briefcase" class="nav__icon"></i> Work
+                </a>
+                <a href="#/ministry/stoicism" class="nav__link" data-route="/ministry/stoicism">
+                    <i data-lucide="brain" class="nav__icon"></i> Stoicism
+                </a>
+                <a href="#/ministry/health" class="nav__link" data-route="/ministry/health">
+                    <i data-lucide="activity" class="nav__icon"></i> Health
+                </a>
+            </nav>
+            
+            <div class="sidebar__footer">
+                <div class="sidebar__date" id="sidebar-date"></div>
+                <div class="sidebar__status">
+                    <div class="sidebar__status-dot"></div> System Online
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main">
+            <div class="main__inner" id="app-root">
+                <!-- Route Views Rendered Here -->
+                <div class="empty-state">
+                    <div class="empty-state__icon"><i data-lucide="loader-2" class="lucide-spin"></i></div>
+                    <h2 class="empty-state__title">Initializing M.A.R.C...</h2>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JS Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/mock-data.js"></script>
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/components/charts.js"></script>
+    <script src="js/components/score-card.js"></script>
+    <script src="js/components/ministry-card.js"></script>
+    <script src="js/components/streak.js"></script>
+    
+    <script src="js/pages/dashboard.js"></script>
+    <script src="js/pages/ministry.js"></script>
+    <script src="js/pages/council.js"></script>
+    
+    <script src="js/router.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+# Node modules
+node_modules/
+
+# Environment Variables
+.env
+
+# Mock Data (contains personal info potentially)
+server/data/mock-db.json
+
+# Logs
+npm-debug.log*
