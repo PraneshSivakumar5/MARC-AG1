@@ -47,21 +47,30 @@ body {
 
 /* ── Typography ── */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: var(--fw-semibold);
-  line-height: 1.2;
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  line-height: 1.1;
   color: var(--text-primary);
+  letter-spacing: -0.02em; /* Tight tracking for large monumental type */
 }
 
-h1 { font-size: var(--fs-3xl); }
+h1 { font-size: var(--fs-3xl); text-transform: none; }
 h2 { font-size: var(--fs-2xl); }
-h3 { font-size: var(--fs-xl); }
+h3 { 
+  font-size: var(--fs-md); 
+  text-transform: uppercase; 
+  letter-spacing: 0.2em; /* Extreme tracking for subheaders mimicking Roman epigraphy */
+  color: var(--text-muted);
+}
 h4 { font-size: var(--fs-lg); }
 h5 { font-size: var(--fs-md); }
 
 p {
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
 }
+
 
 a {
   color: var(--gold);

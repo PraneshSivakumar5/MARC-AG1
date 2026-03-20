@@ -1,160 +1,123 @@
-/* ============================================
-   M.A.R.C – I 🔱 Page Layouts
-   ============================================ */
-
 /* ── Dashboard ── */
 .dashboard-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto auto;
-  gap: var(--space-6);
+  gap: var(--space-8);
 }
 
 .dashboard-grid__hero {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-6);
+  gap: var(--space-8);
 }
 
 .dashboard-grid__ministries {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-4);
+  gap: var(--space-2); /* Tight gap for monolithic look */
 }
 
 .dashboard-grid__charts {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: var(--space-6);
-}
-
-.dashboard-grid__footer {
-  grid-column: 1 / -1;
+  gap: var(--space-8);
 }
 
 /* ── Ministry Detail Page ── */
 .ministry-detail {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-6);
+  gap: var(--space-8);
 }
 
 .ministry-detail__header {
   grid-column: 1 / -1;
   display: flex;
   align-items: center;
-  gap: var(--space-5);
+  gap: var(--space-6);
+  background: var(--bg-surface-low);
+  padding: var(--space-8);
 }
 
 .ministry-detail__avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-full);
+  width: 64px;
+  height: 64px;
+  background: var(--gold);
+  color: var(--bg-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--fs-xl);
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
   font-weight: var(--fw-bold);
 }
 
 .ministry-detail__info h2 {
-  font-size: var(--fs-xl);
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
   margin-bottom: var(--space-1);
+  letter-spacing: -0.02em;
 }
 
 .ministry-detail__info p {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-.ministry-detail__actions {
-  grid-column: 1 / -1;
-}
-
-.ministry-detail__stats {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-}
-
-.ministry-detail__chart {
-  grid-column: 1 / -1;
-}
-
-.ministry-detail__log {
-  grid-column: 1 / -1;
-}
-
-/* ── Stat Card ── */
 .stat-card {
+  background: var(--bg-surface-low);
   text-align: center;
-  padding: var(--space-5);
+  padding: var(--space-8);
 }
 
 .stat-card__value {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: var(--fs-2xl);
   font-weight: var(--fw-bold);
-  color: var(--text-primary);
-  margin-bottom: var(--space-1);
+  color: var(--gold);
+  margin-bottom: var(--space-2);
+  letter-spacing: -0.05em;
 }
 
 .stat-card__label {
   font-size: var(--fs-xs);
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.2em;
+  font-weight: var(--fw-bold);
 }
 
 /* ── Council Page ── */
 .council-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-6);
-}
-
-.council-grid__header {
-  grid-column: 1 / -1;
+  gap: var(--space-8);
 }
 
 .council-grid__summary {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-4);
+  gap: var(--space-2);
 }
 
-.council-grid__verdict {
-  grid-column: 1 / -1;
-}
-
-.council-grid__breakdown {
-  grid-column: 1 / -1;
-}
-
-.council-grid__chart {
-  grid-column: 1 / -1;
-}
-
-.council-grid__directives {
-  grid-column: 1 / -1;
-}
-
-/* ── Council Summary Card ── */
 .summary-card {
+  background: var(--bg-surface-low);
   text-align: center;
-  padding: var(--space-5);
-  position: relative;
+  padding: var(--space-8);
 }
 
 .summary-card__value {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: var(--fs-2xl);
   font-weight: var(--fw-bold);
+  color: var(--gold);
   margin-bottom: var(--space-1);
 }
 
@@ -162,35 +125,32 @@
   font-size: var(--fs-xs);
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.2em;
 }
 
 /* ── Directive Item ── */
 .directive-item {
   display: flex;
-  gap: var(--space-3);
-  padding: var(--space-3) 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-}
-
-.directive-item:last-child {
-  border-bottom: none;
+  gap: var(--space-6);
+  padding: var(--space-4) var(--space-6);
+  background: var(--bg-surface-low);
+  margin-bottom: 2px;
 }
 
 .directive-item__number {
-  font-family: var(--font-mono);
-  font-size: var(--fs-sm);
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
   color: var(--gold);
   font-weight: var(--fw-bold);
   flex-shrink: 0;
-  width: 24px;
 }
 
 .directive-item__text {
-  font-size: var(--fs-sm);
-  color: var(--text-secondary);
-  line-height: 1.5;
+  font-size: var(--fs-base);
+  color: var(--text-primary);
+  line-height: 1.6;
 }
+
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {

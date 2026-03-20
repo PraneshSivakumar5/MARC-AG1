@@ -2,96 +2,81 @@
    M.A.R.C – I 🔱 Components
    ============================================ */
 
-/* ── Glass Card ── */
+/* ── Monolithic Card ── */
 .card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
-  transition: all var(--duration-normal) var(--ease-out);
+  background: var(--bg-surface-low);
+  border: none; /* No-Line Rule */
+  border-radius: 0;
+  padding: var(--space-8);
+  transition: background var(--duration-normal) var(--ease-out);
 }
 
 .card:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--border-active);
-  box-shadow: var(--shadow-glow-sm);
+  background: var(--bg-surface-high);
 }
 
 .card--no-hover:hover {
-  background: var(--bg-card);
-  border-color: var(--border-subtle);
-  box-shadow: none;
+  background: var(--bg-surface-low);
 }
 
-/* ── Score Hero ── */
+/* ── Score Hero (Stat Monolith) ── */
 .score-hero {
   text-align: center;
-  padding: var(--space-10) var(--space-6);
+  padding: var(--space-12) var(--space-8);
+  background: var(--bg-surface-low);
   position: relative;
   overflow: hidden;
 }
 
-.score-hero::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
-  border-radius: var(--radius-full);
-  pointer-events: none;
-}
-
 .score-hero__label {
+  font-family: var(--font-body);
   font-size: var(--fs-xs);
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: var(--space-3);
+  letter-spacing: 0.3em;
+  margin-bottom: var(--space-4);
+  font-weight: var(--fw-bold);
 }
 
 .score-hero__value {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: var(--fs-hero);
   font-weight: var(--fw-bold);
   color: var(--gold);
-  line-height: 1;
-  position: relative;
-  z-index: 1;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
 }
 
 .score-hero__max {
   font-size: var(--fs-xl);
   color: var(--text-muted);
-  font-weight: var(--fw-regular);
+  opacity: 0.5;
 }
 
 .score-hero__ring {
-  width: 180px;
-  height: 180px;
-  margin: 0 auto var(--space-4);
+  width: 240px;
+  height: 240px;
+  margin: 0 auto var(--space-8);
   position: relative;
 }
 
+/* We hide the traditional ring for the monolithic look, 
+   or we keep it but with 0 stroke-linecap for a 'digital' feel */
 .score-hero__ring svg {
   transform: rotate(-90deg);
-  width: 100%;
-  height: 100%;
 }
 
 .score-hero__ring-bg {
   fill: none;
-  stroke: var(--border-subtle);
-  stroke-width: 6;
+  stroke: var(--bg-surface-high);
+  stroke-width: 8;
 }
 
 .score-hero__ring-fill {
   fill: none;
   stroke: var(--gold);
-  stroke-width: 6;
-  stroke-linecap: round;
+  stroke-width: 8;
+  stroke-linecap: square; /* Hard edges on the ring */
   transition: stroke-dashoffset 1.5s var(--ease-out);
 }
 
@@ -100,184 +85,158 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: var(--fs-3xl);
   font-weight: var(--fw-bold);
   color: var(--gold);
+  letter-spacing: -0.02em;
 }
 
 .score-hero__verdict {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   color: var(--text-secondary);
-  margin-top: var(--space-2);
-  font-style: italic;
+  margin-top: var(--space-4);
+  letter-spacing: 0.02em;
+  max-width: 100%;
 }
 
 /* ── Ministry Card ── */
 .ministry-card {
-  padding: var(--space-5);
+  padding: var(--space-6);
+  background: var(--bg-surface-low);
   cursor: pointer;
   position: relative;
-  overflow: hidden;
+  transition: background var(--duration-normal) var(--ease-out);
 }
 
-.ministry-card::after {
+.ministry-card:hover {
+  background: var(--bg-surface-high);
+}
+
+/* Hover Indicator: Primary Bar */
+.ministry-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 3px;
+  width: 4px;
   height: 100%;
-  border-radius: 0 2px 2px 0;
-  transition: background var(--duration-fast) var(--ease-out);
+  background: transparent;
+  transition: background var(--duration-normal);
 }
 
-.ministry-card[data-status="strong"]::after   { background: var(--success); }
-.ministry-card[data-status="steady"]::after   { background: var(--warning); }
-.ministry-card[data-status="failing"]::after  { background: var(--danger); }
+.ministry-card:hover::before {
+  background: var(--gold);
+}
 
 .ministry-card__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 
 .ministry-card__identity {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
 
 .ministry-card__avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-full);
+  width: 42px;
+  height: 42px;
+  background: var(--bg-surface-high);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--fs-sm);
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
   font-weight: var(--fw-bold);
-  flex-shrink: 0;
+  color: var(--gold);
 }
 
-.ministry-card__avatar--wealth   { background: var(--gold-dim); color: var(--gold); }
-.ministry-card__avatar--work     { background: rgba(52, 152, 219, 0.15); color: #3498db; }
-.ministry-card__avatar--stoicism { background: rgba(155, 89, 182, 0.15); color: #9b59b6; }
-.ministry-card__avatar--health   { background: rgba(46, 204, 113, 0.15); color: #2ecc71; }
-
 .ministry-card__name {
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-semibold);
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
   color: var(--text-primary);
+  letter-spacing: 0.02em;
 }
 
 .ministry-card__guide {
   font-size: var(--fs-xs);
   color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .ministry-card__score {
-  font-family: var(--font-mono);
-  font-size: var(--fs-lg);
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
   font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
 }
 
-.ministry-card__score--high    { color: var(--success); }
-.ministry-card__score--mid     { color: var(--warning); }
-.ministry-card__score--low     { color: var(--danger); }
-
-/* ── Progress Bar ── */
+/* ── Progress Bar (Progress Slab) ── */
 .progress {
-  height: 4px;
-  background: var(--border-subtle);
-  border-radius: 2px;
+  height: 6px;
+  background: var(--bg-surface-highest);
   overflow: hidden;
-  margin-top: var(--space-3);
+  margin-top: var(--space-4);
 }
 
 .progress__fill {
   height: 100%;
-  border-radius: 2px;
+  background: var(--gold);
   transition: width 1s var(--ease-out);
 }
-
-.progress__fill--gold    { background: var(--gold); }
-.progress__fill--success { background: var(--success); }
-.progress__fill--warning { background: var(--warning); }
-.progress__fill--danger  { background: var(--danger); }
 
 /* ── Streak Counter ── */
 .streak {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-4) var(--space-5);
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--bg-surface-lowest);
 }
 
 .streak__icon {
   font-size: var(--fs-xl);
-  animation: pulseGlow 2s ease-in-out infinite;
+  color: var(--gold);
 }
 
 .streak__count {
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xl);
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
   font-weight: var(--fw-bold);
   color: var(--gold);
   line-height: 1;
+  letter-spacing: -0.05em;
 }
 
 .streak__label {
   font-size: var(--fs-xs);
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.2em;
 }
 
 /* ── Status Badge ── */
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1);
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-4);
+  background: var(--bg-surface-high);
+  color: var(--text-primary);
   font-size: var(--fs-xs);
-  font-weight: var(--fw-semibold);
+  font-weight: var(--fw-bold);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.15em;
 }
 
-.badge--success { background: var(--success-dim); color: var(--success); }
+.badge--gold { background: var(--gold-dim); color: var(--gold); }
 .badge--warning { background: var(--warning-dim); color: var(--warning); }
-.badge--danger  { background: var(--danger-dim); color: var(--danger); }
-.badge--gold    { background: var(--gold-dim); color: var(--gold); }
-
-.badge__dot {
-  width: 6px;
-  height: 6px;
-  border-radius: var(--radius-full);
-  background: currentColor;
-}
-
-/* ── Chart Container ── */
-.chart-container {
-  position: relative;
-  padding: var(--space-4);
-}
-
-.chart-container__title {
-  font-size: var(--fs-sm);
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: var(--space-4);
-  font-weight: var(--fw-semibold);
-}
-
-.chart-container canvas {
-  width: 100% !important;
-}
+.badge--danger { background: var(--danger-dim); color: var(--danger); }
 
 /* ── Data Table ── */
 .data-table {
@@ -289,53 +248,48 @@
   font-size: var(--fs-xs);
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: var(--fw-semibold);
-  padding: var(--space-3) var(--space-4);
+  letter-spacing: 0.2em;
+  font-weight: var(--fw-bold);
+  padding: var(--space-4);
   text-align: left;
-  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-surface-low);
 }
 
 .data-table td {
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-4);
   font-size: var(--fs-sm);
   color: var(--text-secondary);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  background: var(--bg-surface-low);
+  border-bottom: 2px solid var(--bg-primary); /* Tonal divider */
 }
 
 .data-table tr:hover td {
-  background: var(--bg-card);
+  background: var(--bg-surface-high);
 }
 
 /* ── Action List ── */
 .action-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
 }
 
 .action-item {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-md);
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--bg-surface-low);
   transition: background var(--duration-fast) var(--ease-out);
 }
 
 .action-item:hover {
-  background: var(--bg-card);
+  background: var(--bg-surface-high);
 }
 
 .action-item__check {
-  width: 18px;
-  height: 18px;
-  border: 2px solid var(--border-subtle);
-  border-radius: 4px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--text-muted); /* Ghost Border */
   transition: all var(--duration-fast) var(--ease-out);
   cursor: pointer;
 }
@@ -345,82 +299,62 @@
   border-color: var(--gold);
 }
 
-.action-item__check.checked::after {
-  content: '✓';
-  font-size: 11px;
-  color: var(--bg-primary);
-  font-weight: var(--fw-bold);
-}
-
 .action-item__text {
-  font-size: var(--fs-sm);
-  color: var(--text-secondary);
+  font-size: var(--fs-base);
+  color: var(--text-primary);
+  font-weight: var(--fw-medium);
 }
 
 .action-item__text.completed {
+  opacity: 0.4;
   text-decoration: line-through;
-  color: var(--text-muted);
 }
 
-/* ── Verdict Box ── */
+/* ── Verdict Box (The Imperial Decree) ── */
 .verdict-box {
-  border-left: 3px solid var(--gold);
-  padding: var(--space-4) var(--space-6);
-  background: var(--gold-dim);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-8);
+  background: var(--bg-surface-high);
+  position: relative;
+}
+
+.verdict-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--gold);
 }
 
 .verdict-box__label {
+  font-family: var(--font-display);
   font-size: var(--fs-xs);
   color: var(--gold);
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-weight: var(--fw-semibold);
-  margin-bottom: var(--space-2);
+  letter-spacing: 0.3em;
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-4);
 }
 
 .verdict-box__text {
-  font-size: var(--fs-base);
+  font-size: var(--fs-md);
   color: var(--text-primary);
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
-/* ── Empty State ── */
-.empty-state {
-  text-align: center;
-  padding: var(--space-12) var(--space-6);
-}
-
-.empty-state__icon {
-  font-size: 3rem;
-  margin-bottom: var(--space-4);
-  opacity: 0.3;
-}
-
-.empty-state__title {
-  font-size: var(--fs-lg);
-  color: var(--text-secondary);
-  margin-bottom: var(--space-2);
-}
-
-.empty-state__text {
-  font-size: var(--fs-sm);
-  color: var(--text-muted);
-}
-
-/* ── Buttons ── */
+/* ── Buttons (Imperial Phalanx) ── */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
-  padding: var(--space-3) var(--space-5);
-  border-radius: var(--radius-md);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-semibold);
-  transition: all var(--duration-fast) var(--ease-out);
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  transition: all var(--duration-normal) var(--ease-out);
   cursor: pointer;
-  border: 1px solid transparent;
 }
 
 .btn--gold {
@@ -429,14 +363,13 @@
 }
 
 .btn--gold:hover {
-  background: #e6c04a;
-  box-shadow: var(--shadow-glow-gold);
+  background: white; /* Dramatic contrast shift */
 }
 
 .btn--outline {
   background: transparent;
-  border-color: var(--border-subtle);
-  color: var(--text-secondary);
+  border: 1px solid var(--text-muted);
+  color: var(--text-primary);
 }
 
 .btn--outline:hover {
@@ -446,10 +379,29 @@
 
 .btn--ghost {
   background: transparent;
-  color: var(--text-secondary);
+  color: var(--text-muted);
 }
 
 .btn--ghost:hover {
-  background: var(--bg-card);
   color: var(--text-primary);
 }
+
+/* ── Empty State ── */
+.empty-state {
+  text-align: center;
+  padding: var(--space-20) var(--space-10);
+  background: var(--bg-surface-low);
+}
+
+.empty-state__icon {
+  font-size: 4rem;
+  margin-bottom: var(--space-6);
+  opacity: 0.2;
+}
+
+.empty-state__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  color: var(--text-primary);
+}
+
